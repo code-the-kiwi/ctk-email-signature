@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                 ${title}
                             </div>
                             <div style="font-size: 12px; line-height: 1.4;">
-                                <div>Phone: ${phone}</div>
-                                <div>Email: ${email}</div>
-                                <div>Website: ${website}</div>
+                                <div>${phone}</div>
+                                <div>${email}</div>
+                                <div>${website}</div>
                                 <div style="margin-top: 10px;">
                                     ${linkedin ? `<a href="${linkedin}" style="text-decoration: none; color: #666666; margin-right: 10px;">LinkedIn</a>` : ''}
                                     ${twitter ? `<a href="${twitter}" style="text-decoration: none; color: #666666; margin-right: 10px;">Twitter</a>` : ''}
@@ -51,13 +51,20 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSignature();
     });
 
-    copyButton.addEventListener('click', function() {
-        const range = document.createRange();
-        range.selectNode(preview);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        document.execCommand('copy');
-        window.getSelection().removeAllRanges();
-        alert('Signature copied to clipboard!');
+    copyButton.addEventListener('click', async function() {
+        const htmlContent = preview.innerHTML;
+        try {
+            await navigator.clipboard.writeText(htmlContent);
+            alert('Signature HTML copied to clipboard!');
+        } catch (err) {
+            // Fallback for browsers that don't support the Clipboard API
+            const textarea = document.createElement('textarea');
+            textarea.value = htmlContent;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Signature HTML copied to clipboard!');
+        }
     });
 });
