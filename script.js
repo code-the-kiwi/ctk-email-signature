@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; max-width: 600px; color: #141E19; line-height: 1.5;">
             <table style="border-collapse: collapse; width: 100%;">
                 <tr>
-                    <td style="vertical-align: top; padding-right: 20px; width: 120px;">
-                        <img src="logo.png" alt="Company Logo" style="width: 100px; height: auto; margin-bottom: 10px;">
+                    <td style="vertical-align: middle; padding-right: 20px; width: 120px; text-align: center;">
+                        <img src="logo.png" alt="Company Logo" style="width: 100px; height: auto;">
                     </td>
                     <td style="vertical-align: top; padding-left: 20px; border-left: 2px solid #9DC669;">
                         <div style="margin-bottom: 5px;">
