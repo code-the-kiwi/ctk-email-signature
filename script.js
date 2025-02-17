@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const phone = document.getElementById('phone').value;
         const email = document.getElementById('email').value;
         const website = document.getElementById('website').value;
-        const twitter = document.getElementById('twitter').value;
 
         const signature = `
         <div class="signature-container">
@@ -30,9 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div>${phone}</div>
                                 <div>${email}</div>
                                 <div>${website}</div>
-                                <div style="margin-top: 10px;">
-                                    ${twitter ? `<a href="${twitter}" style="text-decoration: none; color: #666666; margin-right: 10px;">Twitter</a>` : ''}
-                                </div>
                             </div>
                         </div>
                     </td>
@@ -44,10 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     form.addEventListener('input', updateSignature);
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        updateSignature();
-    });
+    // Initialize preview
+    updateSignature();
 
     copyButton.addEventListener('click', async function() {
         const htmlContent = preview.innerHTML;
