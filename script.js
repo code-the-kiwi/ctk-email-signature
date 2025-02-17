@@ -1,35 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('signatureForm');
     const preview = document.getElementById('preview');
-    const copyButton = document.getElementById('copyButton');
 
     function updateSignature() {
         const name = document.getElementById('name').value;
         const title = document.getElementById('title').value;
         const phone = document.getElementById('phone').value;
         const email = document.getElementById('email').value;
-        const website = document.getElementById('website').value;
+        const website = 'codethekiwi.be';
 
         const signature = `
-        <div class="signature-container">
-            <table>
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; max-width: 600px; color: #141E19; line-height: 1.5;">
+            <table style="border-collapse: collapse; width: 100%;">
                 <tr>
-                    <td>
-                        <img src="logo.png" alt="Company Logo" style="max-width: 150px; height: auto; margin-bottom: 10px;">
+                    <td style="vertical-align: top; padding-right: 20px; width: 120px;">
+                        <img src="logo.png" alt="Company Logo" style="width: 100px; height: auto; margin-bottom: 10px;">
                     </td>
-                    <td style="padding-left: 15px;">
-                        <div style="font-family: Arial, sans-serif; max-width: 600px; color: #333333;">
-                            <div style="font-size: 14px; font-weight: bold; margin-bottom: 5px; color: #000000;">
+                    <td style="vertical-align: top; padding-left: 20px; border-left: 2px solid #9DC669;">
+                        <div style="margin-bottom: 5px;">
+                            <div style="font-size: 16px; font-weight: 600; color: #113421; margin-bottom: 4px;">
                                 ${name}
                             </div>
-                            <div style="font-size: 12px; color: #666666; margin-bottom: 10px;">
+                            <div style="font-size: 14px; color: #14492C; margin-bottom: 12px;">
                                 ${title}
                             </div>
-                            <div style="font-size: 12px; line-height: 1.4;">
-                                <div>${phone}</div>
-                                <div>${email}</div>
-                                <div>${website}</div>
-                            </div>
+                        </div>
+                        <div style="font-size: 13px; color: #141E19;">
+                            ${phone ? `<div style="margin-bottom: 4px;">${phone}</div>` : ''}
+                            ${email ? `<div style="margin-bottom: 4px;"><a href="mailto:${email}" style="color: #47AD5C; text-decoration: none;">${email}</a></div>` : ''}
+                            <div><a href="https://${website}" style="color: #47AD5C; text-decoration: none;">${website}</a></div>
                         </div>
                     </td>
                 </tr>
@@ -40,23 +39,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     form.addEventListener('input', updateSignature);
-    // Initialize preview
     updateSignature();
-
-    copyButton.addEventListener('click', async function() {
-        const htmlContent = preview.innerHTML;
-        try {
-            await navigator.clipboard.writeText(htmlContent);
-            alert('Signature HTML copied to clipboard!');
-        } catch (err) {
-            // Fallback for browsers that don't support the Clipboard API
-            const textarea = document.createElement('textarea');
-            textarea.value = htmlContent;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            alert('Signature HTML copied to clipboard!');
-        }
-    });
 });
