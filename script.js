@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const phone = document.getElementById('phone').value;
         const email = document.getElementById('email').value;
         const website = document.getElementById('website').value;
-        const linkedin = document.getElementById('linkedin').value;
         const twitter = document.getElementById('twitter').value;
 
         const signature = `
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div>${email}</div>
                                 <div>${website}</div>
                                 <div style="margin-top: 10px;">
-                                    ${linkedin ? `<a href="${linkedin}" style="text-decoration: none; color: #666666; margin-right: 10px;">LinkedIn</a>` : ''}
                                     ${twitter ? `<a href="${twitter}" style="text-decoration: none; color: #666666; margin-right: 10px;">Twitter</a>` : ''}
                                 </div>
                             </div>
