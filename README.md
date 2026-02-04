@@ -23,3 +23,6 @@ internal use. Others are free to copy or adapt the code if it fits their needs.
 
 ## Maintainer
 CodetheKiwi — https://codethekiwi.be
+
+## License
+MIT
